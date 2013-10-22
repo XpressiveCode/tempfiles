@@ -28,7 +28,8 @@ function cleanPeriodically(dir, ttl, callback){
                     if(!files.length){
                         return;
                     }
-                    var file = files.pop()
+                    var file = files.pop();
+                    if(file === '.gitignore')return;
                     curfile = [dir, file].join("/");
                     fs.stat(curfile, function(err, stats){
                         if(err || !stats.isFile()){
